@@ -324,7 +324,8 @@ poligono3D(rec4, rec4I, rec4T, aTextura[14] ,[	0.0, 0.0, coordZ], xRo, [0, 0, 0]
 var keyPrecionado = {};
 function manejoKeyAbajo(evento) {
 	
-    keyPrecionado[evento.keyCode] = true;
+    keyPrecionado[evento.keyCode] = true
+	// alert(evento.keyCode)
     if (String.fromCharCode(evento.keyCode) == "F") {
         enbudo += 1;
         if (enbudo == 3) {
