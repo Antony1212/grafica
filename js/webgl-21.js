@@ -287,6 +287,7 @@ function poligono3D(pPol, pPolI, pPolT, pText, pTras, pAng1, pEje1, pAng2, pEje2
     modificarMatrizUniforme();
     gl.drawElements(gl.TRIANGLES, pPolI.numItems, gl.UNSIGNED_SHORT, 0);
 }
+
 var xRo = 0, yRo = 0, zRo = 0;
 var xRot = 0, yRot = 0, zRot = 0;
 var  velX= 0, velY= 0,  velZ = 0, coordZ= -10, enbudo= 5;
@@ -310,11 +311,11 @@ function dibujarEscena() {
 	poligono3D(lad11, lad11I, lad11T, aTextura[10], [0.0, 0.0, coordZ], xRo, [0, 0, 0], yRo, [0, 1, 0], zRo, [0, 0, 1], [1, 1, 1]);
 	poligono3D(lad12, lad12I, lad12T, aTextura[11], [0.0, 0.0, coordZ], xRo, [0, 0, 0], yRo, [0, 1, 0], zRo, [0, 0, 1], [1, 1, 1]);
 //cuello
-	poligono3D(cub1, cub1I, cub1T, aTextura[12] ,[0.0, 1.0, coordZ], xRo, [0, 0, 0], yRo, [0, 1, 0], zRo, [0, 0, 1], [1, 1, 1]);
+	poligono3D(cub1, cub1I, cub1T, aTextura[12] ,[0.0, 1.0, coordZ], xRo, [1, 0, 0], yRo, [0, 1, 0], zRo, [0, 0, 1], [1, 1, 1]);
 // brazo izquierdo
-poligono3D(rec1, rec1I, rec1T, aTextura[13] ,[0.0, 0.0, coordZ], xRo, [0, 0, 0], yRo, [0, 1, 0], zRo, [1, 0, 1], [1, 1, 1]);
+poligono3D(rec1, rec1I, rec1T, aTextura[13] ,[0.0, 0.0, coordZ], xRo, [1, 0, 0], yRo, [0, 1, 0], zRo, [1, 0, 1], [1.1, 1.1, 1.1]);
 //brazo derecho	
-poligono3D(rec2, rec2I, rec2T, aTextura[13] ,[0.0, 0.0, coordZ], xRo, [0, 0, 0], yRo, [0, 1, 0], zRo, [1, 0, 1], [1, 1, 1]);
+poligono3D(rec2, rec2I, rec2T, aTextura[13] ,[0.0, 0.0, coordZ], xRo, [0, 0, 0], yRo, [0, 1, 0], zRo, [1, 0, 1], [1.1, 1.1, 1.1]);
 //pie derecho
 poligono3D(rec3, rec3I, rec3T, aTextura[14] ,[0.0, 0.0, coordZ], xRo, [0, 0, 0], yRo, [0, 1, 0], zRo, [1, 0, 1], [1, 1, 1]);
 //pie izquierdo
@@ -325,7 +326,7 @@ var keyPrecionado = {};
 function manejoKeyAbajo(evento) {
 	
     keyPrecionado[evento.keyCode] = true
-	// alert(evento.keyCode)
+	//alert(evento.keyCode)
     if (String.fromCharCode(evento.keyCode) == "F") {
         enbudo += 1;
         if (enbudo == 3) {
@@ -341,10 +342,10 @@ function manejoKeyArriba(evento) {
 function manejoKeys() {
 
 	
-    if (keyPrecionado[109]) {
+    if (keyPrecionado[83]) {//s
         coordZ-= 0.05; // Page Up
     }
-    if (keyPrecionado[107]) {
+    if (keyPrecionado[87]) {//w
         coordZ+= 0.05; // Page Down
     }
     if (keyPrecionado[37]) {
@@ -396,6 +397,7 @@ function animacion() {
 		zRot = 0;
 		
 	}
+	if(keyPrecionado[39]){
 		if(yRot== 90 ||yRot== 180 ||yRot== 270||yRot==359 ){
 
 			yRo=yRo+90;
@@ -404,6 +406,26 @@ function animacion() {
 			}
 			 
 		}	
+	
+	}
+	if(keyPrecionado[37]){
+		if(yRot== 45 ||yRot== 135 ||yRot== 225||yRot==315 ){
+
+			yRo=yRo-90;
+			if(yRo>=360){
+				yRo=0;
+			}
+			 
+		}	
+	
+	}
+	if(keyPrecionado[87]){
+			
+	
+	}
+
+
+
 	ultimoTiempo = tiempoActual;
 }
 	function momento() {
