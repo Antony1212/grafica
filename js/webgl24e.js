@@ -138,11 +138,14 @@ function coordenadaLuz(pPosL, pNumL){
 }
 var cub= Array(), cubT, cubI, cubN= Array();
 function iniciarBuffers() {
-	cub.push(puntosPoligono([-1, -1, 1, 1, -1, 1, 1, 1, 1, -1, 1, 1], 4));
-	cub.push(puntosPoligono([-1, -1, -1, 1, -1, -1, 1, 1, -1, -1, 1, -1], 4));
-	cub.push(puntosPoligono([-1, 1, 1, 1, 1, 1, 1, 1, -1, -1 , 1, -1], 4));
-	cub.push(puntosPoligono([-1, -1, 1, 1, -1, 1, 1, -1, -1, -1 , -1, -1], 4));
-	cub.push(puntosPoligono([1, -1, 1, 1, -1, -1, 1, 1, -1, 1, 1, 1], 4));
+	cub.push(puntosPoligono([	0.5,1,0.5,
+								-0.5,1,0.5,
+								-0.5,-1,0.5,
+								0.5,-1,0.5], 4));
+	cub.push(puntosPoligono([-0.5,1,-0.5,0.5,1,-0.5,0.5,-1,-0.5,-0.5,-1,-0.5], 4));
+	cub.push(puntosPoligono([0.5,1,0.5,-0.5,1,0.5,-0.5,1,-0.5,0.5,1,-0.5], 4));
+	cub.push(puntosPoligono([-0.5,-1,0.5,0.5,-1,0.5,0.5,-1,-0.5, -0.5,-1,-0.5], 4));
+	cub.push(puntosPoligono([0.5,1,0.5,0.5,1,-0.5,0.5,-1,-0.5, 0.5,-1,0.5], 4));
 	cub.push(puntosPoligono([-1, -1, 1, -1, -1, -1, -1, 1, -1, -1, 1, 1], 4));
 	//... Iluminacion ambiente
 	cubN.push(coordenadaLuz([0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1], 4)); // Front face
